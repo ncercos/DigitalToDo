@@ -11,6 +11,7 @@ function TextContainer() {
         const newTasks = [...tasks]
         newTasks.splice(index, 1)
         setTasks(newTasks)
+        deleteTask(index)
       }
     
       const handleSubmit = (task) => {
@@ -41,6 +42,18 @@ function TextContainer() {
         console.error(error);
       }
     }
+
+    const deleteTask = async (id) => {
+        try {
+          await fetch(`/api/tasks/${id}`, {
+            method: 'DELETE',
+            body: JSON.stringify({id}),
+            headers: {"Content-type": "application/json"}
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      }
 
     useEffect(() => {
         getTasks()

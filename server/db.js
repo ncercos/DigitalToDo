@@ -27,7 +27,19 @@ const addTask = (req, res) => {
         })
 }
 
+const completeTask = (req, res) => {
+    const id = parseInt(req.params.id)
+
+    pool.query('DELETE FROM tasks where ID = $1', [id], (error, result) => {
+            if(error) {
+                throw error
+            }
+            res.status(200).send(`Deleted task with ID: ${id}`)
+        })
+}
+
 module.exports = {
     getTasks,
-    addTask
+    addTask,
+    completeTask
 }

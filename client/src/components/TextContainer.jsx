@@ -30,7 +30,7 @@ function TextContainer() {
         }
     }
 
-    const addTasks = async (task) => {
+    const addTask = async (task) => {
       try {
         const response = await fetch('/api/tasks', {
           method: 'POST',

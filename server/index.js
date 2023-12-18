@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 
 app.get('/api/tasks', db.getTasks)
 app.post('/api/tasks', db.addTask)
+app.delete('/api/tasks/:id', db.completeTask)
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`)

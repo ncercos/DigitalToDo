@@ -7,6 +7,27 @@ const pool = new Pool({
     port: 5432,
 })
 
-// TODO: the methods to get info from the db
+const getTasks = (req, res) => {
+    pool.query('SELECT * FROM tasks ORDER BY id ASC', (error, result) => {
+        if(error) {
+            throw error
+        }
+        res.status(200).json(result.rows)
+    })
+}
 
-module.exports = {}
+const addTask = (req, res) => {
+    const {title, description} = req.body
+
+    pool.query('INSERT INTO tasks (title, description) VALUES ($1, $2)', [title, description], (error, result) => {
+            if(error) {
+                throw error
+            }
+            res.status(201).send(`Added tasks - ${title}: ${description}`)
+        })
+}
+
+module.exports = {
+    getTasks,
+    addTask
+}

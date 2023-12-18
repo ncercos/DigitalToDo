@@ -2,9 +2,9 @@ function TableHeader() {
     return(
         <thead>
         <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Complete</th>
+          <th className='center'>Title</th>
+          <th className='center'>Description</th>
+          <th className='center'>Complete</th>
         </tr>
       </thead>
     )
@@ -14,18 +14,16 @@ const TableBody = (props) => {
     const rows = props.taskData.map((row, index) => {
       return (
         <tr key={index}>
-          <td>{row.title}</td>
+          <td className='center'>{row.title}</td>
+          <td className='center'>{row.description}</td>
           <td>
-            <a href={row.description}>{row.description}</a>
-          </td>
-          <td>
-            <button onClick={() => props.removeTask(index)}>Complete</button>
+            <button className='center' onClick={() => props.removeTask(index)}>Complete</button>
           </td>
         </tr>
       )
     })
   
-    return <tbody>{rows}</tbody>
+    return <tbody className='center'>{rows}</tbody>
   }
 
 function Table(props) {

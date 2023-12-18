@@ -1,7 +1,6 @@
 import Table from './Table'
 import Form from './Form'
 import {useState, useEffect} from 'react'
-import { addTask } from '../../../server/db';
 
 function TextContainer() {
 

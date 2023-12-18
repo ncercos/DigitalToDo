@@ -2,9 +2,11 @@ import TextContainer from "./components/TextContainer"
 
 function App() {
   return(
-    <div>
-      <TextContainer />
-    </div>
+    <section>
+      <div className="container">
+        <TextContainer />
+      </div>
+    </section>
   )
 }
 

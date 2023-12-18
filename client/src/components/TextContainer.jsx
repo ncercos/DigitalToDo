@@ -8,9 +8,9 @@ function TextContainer() {
 
     const handleComplete = (index) => {
         const newTasks = [...tasks]
-        newTasks.splice(index, 1)
+        const task = newTasks.splice(index, 1)
         setTasks(newTasks)
-        deleteTask(index)
+        deleteTask(task[0])
       }
     
       const handleSubmit = (task) => {
@@ -42,11 +42,11 @@ function TextContainer() {
       }
     }
 
-    const deleteTask = async (id) => {
+    const deleteTask = async (task) => {
         try {
-          await fetch(`/api/tasks/${id}`, {
+          await fetch('/api/tasks', {
             method: 'DELETE',
-            body: JSON.stringify({id}),
+            body: JSON.stringify(task),
             headers: {"Content-type": "application/json"}
           });
         } catch (error) {

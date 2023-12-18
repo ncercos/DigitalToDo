@@ -28,13 +28,13 @@ const addTask = (req, res) => {
 }
 
 const completeTask = (req, res) => {
-    const id = parseInt(req.params.id)
+    const {title, description} = req.body
 
-    pool.query('DELETE FROM tasks where ID = $1', [id], (error, result) => {
+    pool.query('DELETE FROM tasks where title = $1 AND description = $2', [title, description], (error, result) => {
             if(error) {
                 throw error
             }
-            res.status(200).send(`Deleted task with ID: ${id}`)
+            res.status(200).send(`Deleted task - ${title}: ${description}`)
         })
 }
 
